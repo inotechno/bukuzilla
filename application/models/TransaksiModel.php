@@ -1,18 +1,18 @@
 <?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
 	
-	class AccountModel extends CI_Model {
-			
-	    var $column_order = array(null, 'a.nama_akun','a.no_akun','a.sub_no_akun', 'a.status_akun', 'a.level_akun', 'a.saldo_awal', 'a.created_at', 'a.created_by', 'a.id', 'u.id'); 
-	    var $column_search = array('a.nama_akun','a.no_akun','a.sub_no_akun', 'a.status_akun', 'a.level_akun'); //field yang diizin untuk pencarian 
-	    var $order = array('a.level_akun' => 'asc'); // default order 
+	class TransaksiModel extends CI_Model {
+	
+		var $column_order = array(null, 'j.id_jurnal','j.no_voucher','j.description', 'j.tgl_voucher', 'j.status_post', 'j.created_at', 'j.created_by', 'u.id'); 
+	    var $column_search = array('j.no_voucher','j.description', 'j.tgl_voucher', 'j.status_post'); //field yang diizin untuk pencarian 
+	    var $order = array('j.created_at' => 'desc'); // default order 
 	
 	// Datatable
 		private function _get_datatables_query()
 		{
-			$this->db->select('a.*, u.nama_lengkap');
-			$this->db->from('account as a');
- 			$this->db->join('users as u', 'a.created_by = u.id', 'left');
+			$this->db->select('j.*, u.nama_lengkap');
+			$this->db->from('jurnal as j');
+ 			$this->db->join('users as u', 'j.created_by = u.id', 'left');
 	        $i = 0;
 	     	
 	        foreach ($this->column_search as $item) // looping awal
@@ -44,7 +44,7 @@
 	        }
 		}
 
-		function get_datatables()
+		function getJurnal()
 		{
 			$this->_get_datatables_query();
 	        if($_POST['length'] != -1)
@@ -63,33 +63,34 @@
 	 
 	    function count_all()
 	    {
-	        $this->db->from('account');
+	        $this->db->from('jurnal');
 	        return $this->db->count_all_results();
 	    }
-	// Datatable
+	// Datatable End
+	    function addTransaksi($jurnal, $trx_id_account)
+	    {
+	    	$this->db->trans_start();
+	    		$this->db->insert('jurnal', $jurnal);
+	    		$trx_id_jurnal = $this->db->insert_id();
+	    		$result = array();
+	    			foreach ($trx_id_account as $key => $value) {
+	    				$result[] = array(
+	    					'trx_id_jurnal' => $trx_id_jurnal,
+	    					'trx_id_account' => $_POST['trx_id_account'][$key],
+	    					'trx_debit' => $_POST['trx_debit'][$key],
+	    					'trx_kredit' => $_POST['trx_kredit'][$key],
+	    					'trx_description' => $_POST['trx_description'][$key],
+	    					);
+	    			}
 
-		function addAccount($data)
-		{
-			return $this->db->insert('account', $data);
-		}
+	    		$this->db->insert_batch('transaksi_jurnal', $result);
+	    	$this->db->trans_complete();	
+	    }
+
+	    
 	
-		function deleteAccount($no_akun, $sub_no_akun)
-		{
-			return $this->db->delete('account', array('no_akun' => $no_akun, 'sub_no_akun' => $sub_no_akun));
-		}
-
-		function updateAccount($no_akun, $sub_no_akun, $data)
-		{
-			return $this->db->update('account', $data, array('no_akun' => $no_akun, 'sub_no_akun' => $sub_no_akun));
-		}
-
-		function getSelectAccount()
-		{
-			return $this->db->get('account')->result();
-		}
-
 	}
 	
-	/* End of file MasterModel.php */
-	/* Location: ./application/models/MasterModel.php */
+	/* End of file Transaksi_Model.php */
+	/* Location: ./application/models/Transaksi_Model.php */
 ?>

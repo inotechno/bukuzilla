@@ -22,6 +22,12 @@
 			$this->load->view('plugins/account');
 		}
 
+		public function getSelectAccount()
+		{
+			$get = $this->AccountModel->getSelectAccount();
+			echo json_encode($get);
+		}
+
 		public function getAccount()
 		{
 			$list = $this->AccountModel->get_datatables();
