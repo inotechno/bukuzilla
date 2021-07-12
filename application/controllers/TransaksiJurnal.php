@@ -73,6 +73,51 @@
 
 			echo json_encode($output);
 		}
+
+		public function validasiNoVoucher()
+		{
+			$no_voucher = $this->input->post('no_voucher');
+			$act = $this->db->get_where('jurnal', array('no_voucher' => $no_voucher));
+			if ($act->num_rows() > 0) {
+				$response = array(
+					'type' => 'danger',
+					'message' => 'No Voucher Sudah Tersedia'
+				);
+			}else{
+				$response = array(
+					'type' => 'success',
+					'message' => 'No Voucher Tersedia'
+				);
+			}
+
+			echo json_encode($response);
+		}
+
+		public function addTransaksi()
+		{
+			$jurnal['no_voucher'] = $this->input->post('no_voucher');
+			$jurnal['tgl_voucher'] = $this->input->post('tgl_voucher');
+			$jurnal['description'] = $this->input->post('description');
+			$jurnal['created_by'] = $this->session->userdata('id');
+
+			$trx_id_account = $this->input->post('trx_id_account', TRUE);
+
+			$act = $this->TransaksiModel->addTransaksi($jurnal, $trx_id_account);
+
+			if (!$act) {
+				$response = array(
+					'type' => 'danger',
+					'message' => 'Transaksi Gagal Ditambah'
+				);
+			}else{
+				$response = array(
+					'type' => 'success',
+					'message' => 'Transaksi Berhasil Ditambah'
+				);
+			}
+
+			echo json_encode($response);
+		}
 	
 	}
 	

@@ -143,6 +143,79 @@
 
 			echo json_encode($response);
 		}
+
+
+	// Saldo Awal
+
+		public function saldoAwal()
+		{
+			$def['title'] = 'Saldo Awal';
+			$def['breadcrumb'] = 'Saldo Awal';
+
+			$this->load->view('partials/head', $def);
+			$this->load->view('partials/navbar');
+			$this->load->view('partials/breadcrumb', $def);
+			$this->load->view('saldoAwal');
+			$this->load->view('partials/footer');
+			$this->load->view('plugins/saldoAwal');
+		}
+
+		public function getSaldoAccount()
+		{
+			$list = $this->AccountModel->get_datatables();
+
+			$data = array();
+			$no = $_POST['start'];
+
+			foreach ($list as $ls) {
+				$row = array();
+				$row[] = $ls->no_akun.'.'.$ls->sub_no_akun;
+				$row[] = $ls->nama_akun;
+				$row[] = $ls->level_akun;
+				$row[] = $ls->status_akun;
+				$row[] = number_format($ls->saldo_awal);
+
+				if ($ls->status_akun == 'Y') {
+					$row[] = '<a class="update-data btn btn-warning btn-rounded btn-sm" href="#" data-saldo-awal="'.$ls->saldo_awal.'" data-no-akun="'.$ls->no_akun.'" data-sub-no-akun="'.$ls->sub_no_akun.'">Update Saldo</a>';
+				}else{
+					$row[] = '';
+				}
+
+				$data[] = $row;
+			}
+
+			$output = array(
+				"draw" => $_POST['draw'],
+	            "recordsTotal" => $this->AccountModel->count_all(),
+	            "recordsFiltered" => $this->AccountModel->count_filtered(),
+	            "data" => $data
+			);
+
+			echo json_encode($output);
+		}
+
+		public function updateSaldoAwal()
+		{
+			$no_akun = $this->input->post('no_akun');
+			$sub_no_akun = $this->input->post('sub_no_akun');
+			$data['saldo_awal'] = $this->input->post('saldo_awal');
+
+			$act = $this->AccountModel->updateAccount($no_akun, $sub_no_akun, $data);
+			
+			if ($act) {
+				$response = array(
+					'message' => 'Saldo Awal Berhasil Diubah',
+					'type' => 'success'
+				);
+			}else{
+				$response = array(
+					'message' => 'Saldo Awal Gagal Diubah',
+					'type' => 'danger'
+				);
+			}
+
+			echo json_encode($response);
+		}
 	
 	}
 	

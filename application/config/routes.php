@@ -56,3 +56,4 @@ $route['translate_uri_dashes'] = FALSE;
 $route['logout'] = 'Auth/logout';
 
 $route['companyprofile'] = 'CompanyProfile';
+$route['saldoAwal'] = 'Account/saldoAwal';
