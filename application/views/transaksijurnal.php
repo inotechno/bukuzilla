@@ -4,16 +4,17 @@
 
       <div class="row">
         <div class="col">
+          <div class="text-right mb-2">
+            <a class="btn btn-sm btn-neutral btn-round btn-icon" href="<?= site_url('TransaksiJurnal/pageAddJurnal') ?>">
+              <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
+              <span class="btn-inner--text">Tambah</span>
+            </a>
+          </div>
           <div class="card">
-            <div class="card-header text-right">
-              <a class="btn btn-sm btn-neutral btn-round btn-icon" href="<?= site_url('TransaksiJurnal/pageAddJurnal') ?>">
-                <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
-                <span class="btn-inner--text">Tambah</span>
-              </a>
-            </div>
-            <div class="table-responsive p-3">
+            
+            <div class="table-responsive py-3">
               <table class="table table-flush" id="table-jurnal">
-                <thead>
+                <thead class="thead-light">
                   <tr>
                       <th>Nomor Voucher</th>
                       <th>Description</th>

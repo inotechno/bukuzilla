@@ -30,6 +30,7 @@
 		})
 
 		function reset_form() {
+            $('#no_account').focus();
             $('#no_account').val('').trigger('change');
             $('#account_name').val('');
             $('#debit').val('');
@@ -276,7 +277,7 @@
             $('#'+id_row).remove();
             valueBalance();
         });
-
+        
         $('#form-addTransaksi').submit(function() {
             var data = $(this).serialize();
             $.ajax({
@@ -301,7 +302,7 @@
 	                 	}
 	                });
 
-	                window.location.reload();
+                    reset_form();
                 }
 
             });
