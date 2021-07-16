@@ -67,6 +67,19 @@
 	        return $this->db->count_all_results();
 	    }
 	// Datatable End
+	    function getJurnalById($id)
+	    {
+	    	return $this->db->get_where('jurnal', array('id_jurnal' => $id))->row();
+	    }
+
+	    function getDetailTransaksi($id)
+	    {
+	    	$this->db->select('transaksi_jurnal.*, account.no_akun, account.sub_no_akun, account.nama_akun');
+	    	$this->db->join('account', 'account.id = transaksi_jurnal.trx_id_account', 'left');
+	    	$this->db->where('trx_id_jurnal', $id);
+	    	return $this->db->get('transaksi_jurnal')->result();
+	    }
+
 	    function addTransaksi($jurnal, $trx_id_account)
 	    {
 	    	$this->db->trans_start();
@@ -85,6 +98,11 @@
 
 	    		$this->db->insert_batch('transaksi_jurnal', $result);
 	    	$this->db->trans_complete();	
+	    }
+
+	    function updateJurnal($id_jurnal, $data)
+	    {
+	    	return $this->db->update('jurnal', $data, array('id_jurnal' => $id_jurnal));
 	    }
 
 	    
