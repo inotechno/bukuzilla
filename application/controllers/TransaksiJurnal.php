@@ -124,7 +124,7 @@
 	                        </td>
 	                        <td class="text-center">
 	                            <div class="btn-group btn-group">
-	                                <a href="#" class="btn btn-sm btn-info btn-edit-trx" data-row="data'.$no.'" data-no-akun="'.$dt->no_akun.'.'.$dt->sub_no_akun.'" data-nama="'.$dt->nama_akun.'" data-debit="'.$dt->trx_debit.'" data-kredit="'.$dt->trx_kredit.'" data-deskripsi="'.$dt->trx_description.'"><i class="ni ni-settings"></i></a>
+	                                <a href="#" class="btn btn-sm btn-info btn-edit-trx" data-row="data'.$no.'" data-trx-id="'.$dt->trx_id.'" data-no-akun="'.$dt->no_akun.'.'.$dt->sub_no_akun.'" data-id-akun="'.$dt->id.'" data-nama="'.$dt->nama_akun.'" data-debit="'.$dt->trx_debit.'" data-kredit="'.$dt->trx_kredit.'" data-deskripsi="'.$dt->trx_description.'"><i class="ni ni-settings"></i></a>
 	                                <a href="#" data-row="data'.$no.'"" class="btn btn-sm btn-danger btn-delete-trx"><span class="fa fa-times"></span></a>
 	                            </div>
 	                        </td>
@@ -199,6 +199,55 @@
 				$response = array(
 					'type' => 'danger',
 					'message' => 'Data Jurnal Gagal Diubah'
+				);
+			}
+
+			echo json_encode($response);
+		}
+
+		public function addDetailTransaksi()
+		{
+			$data['trx_id_jurnal'] = $this->input->post('trx_id_jurnal');
+			$data['trx_id_account'] = $this->input->post('trx_id_account');
+			$data['trx_debit'] = $this->input->post('trx_debit');
+			$data['trx_kredit'] = $this->input->post('trx_kredit');
+			$data['trx_description'] = $this->input->post('trx_description');
+
+			$act = $this->TransaksiModel->addDetailTransaksi($data);
+			if ($act) {
+				$response = array(
+					'type' => 'success',
+					'message' => 'Data Detail Transaksi Berhasil Ditambah'
+				);
+			}else{
+				$response = array(
+					'type' => 'danger',
+					'message' => 'Data Detail Transaksi Gagal Ditambah'
+				);
+			}
+
+			echo json_encode($response);
+		}
+
+		public function updateDetailTransaksi()
+		{
+			$trx_id = $this->input->post('trx_id');
+			$data['trx_id_jurnal'] = $this->input->post('trx_id_jurnal');
+			$data['trx_id_account'] = $this->input->post('trx_id_account');
+			$data['trx_debit'] = $this->input->post('trx_debit');
+			$data['trx_kredit'] = $this->input->post('trx_kredit');
+			$data['trx_description'] = $this->input->post('trx_description');
+
+			$act = $this->TransaksiModel->updateDetailTransaksi($trx_id, $data);
+			if ($act) {
+				$response = array(
+					'type' => 'success',
+					'message' => 'Data Detail Transaksi Berhasil Diubah'
+				);
+			}else{
+				$response = array(
+					'type' => 'danger',
+					'message' => 'Data Detail Transaksi Gagal Diubah'
 				);
 			}
 

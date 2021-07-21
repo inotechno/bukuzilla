@@ -74,7 +74,7 @@
 
 	    function getDetailTransaksi($id)
 	    {
-	    	$this->db->select('transaksi_jurnal.*, account.no_akun, account.sub_no_akun, account.nama_akun');
+	    	$this->db->select('transaksi_jurnal.*,account.id, account.no_akun, account.sub_no_akun, account.nama_akun');
 	    	$this->db->join('account', 'account.id = transaksi_jurnal.trx_id_account', 'left');
 	    	$this->db->where('trx_id_jurnal', $id);
 	    	return $this->db->get('transaksi_jurnal')->result();
@@ -105,7 +105,15 @@
 	    	return $this->db->update('jurnal', $data, array('id_jurnal' => $id_jurnal));
 	    }
 
-	    
+	    function addDetailTransaksi($data)
+	    {
+	    	return $this->db->insert('transaksi_jurnal', $data);
+	    }
+
+	    function updateDetailTransaksi($trx_id, $data)
+	    {
+	    	return $this->db->update('transaksi_jurnal', $data, array('trx_id' => $trx_id));
+	    }
 	
 	}
 	

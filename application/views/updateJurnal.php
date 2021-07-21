@@ -47,29 +47,31 @@
 
           <div class="card">
             <div class="card-header pb-1">
-              <div class="row">
-                <input type="hidden" name="trx_id_jurnal">
-                <div class="form-group col-md">
-                  <select id="no_account" name="trx_id_account" class="form-control form-control-sm">
-                    <option></option>
-                  </select>
+              <form id="form-addDetailTransaksi">
+                <div class="row">
+                  <input type="hidden" name="trx_id_jurnal">
+                  <div class="form-group col-md">
+                    <select id="no_account" name="trx_id_account" class="form-control form-control-sm">
+                      <option></option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md">
+                    <input type="text" id="account_name" class="form-control form-control-sm" placeholder="Account Name" readonly="">
+                  </div>
+                  <div class="form-group col-md">
+                    <input type="number" id="debit" name="trx_debit" class="form-control form-control-sm" placeholder="Debit">
+                  </div>
+                  <div class="form-group col-md">
+                    <input type="number" id="credit" name="trx_kredit" class="form-control form-control-sm" placeholder="Kredit">
+                  </div>
+                  <div class="form-group col-md">
+                    <input type="text" id="description" name="trx_description" class="form-control form-control-sm" placeholder="Description">
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" id="btn-addTransaksi" class="btn btn-sm btn-rounded"><span class="fas fa-plus"></span></button>
+                  </div>
                 </div>
-                <div class="form-group col-md">
-                  <input type="text" id="account_name" class="form-control form-control-sm" placeholder="Account Name" readonly="">
-                </div>
-                <div class="form-group col-md">
-                  <input type="number" id="debit" name="trx_debit" class="form-control form-control-sm" placeholder="Debit">
-                </div>
-                <div class="form-group col-md">
-                  <input type="number" id="credit" name="trx_kredit" class="form-control form-control-sm" placeholder="Kredit">
-                </div>
-                <div class="form-group col-md">
-                  <input type="text" id="description" name="trx_description" class="form-control form-control-sm" placeholder="Description">
-                </div>
-                <div class="form-group">
-                  <button type="button" id="btn-addRowTransaksi" class="btn btn-sm btn-rounded"><span class="fas fa-plus"></span></button>
-                </div>
-              </div>
+              </form>
             </div>
             <div class="card-body table-responsive">
               <table class="table table-striped table-flush">

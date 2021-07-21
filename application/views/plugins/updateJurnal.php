@@ -206,67 +206,28 @@
             return false;
         });
 
-		$('#btn-addRowTransaksi').on('click', function() {
-			var jumlahRow = parseInt($('#table-list-transaksi tr').length);
-            jumlahRow = isNaN(jumlahRow) ? 0 : jumlahRow;
-            var nextData = jumlahRow + 1;
-
-            var no_akun = $('#no_account').val();
-            var no_akun_text = $('#no_account option:selected').attr('data-no-akun');
-            var nama_akun = $('#account_name').val();
-            var debit = $('#debit').val();
-            var kredit = $('#credit').val();
-            var deskripsi = $('#description').val();
-
-            if ($('#no_account').val() == '') {
-                return false;
-            }else if ($('#account_name').val() == '') {
-                return false;
-            }else if ($('#debit').val() == '' && $('#credit').val() == '') {
-                $(this).focus();
-                return false;
-            }else if ($('#description').val() == '') {
-                $(this).focus();
-                return false;
-            }else{
-                $('#table-list-transaksi').append(
-                    '<tr id="data'+nextData+'">'+
-                        '<td class="text-center">'+
-                            no_akun_text+
-                            '<input type="hidden" name="trx_id_account[]" placeholder="Nomor Akun" value="'+no_akun+'">'+
-                        '</td>'+
-                        '<td class="text-center">'+
-                            nama_akun +
-                            '<input type="hidden" name="nama_akun[]" value="'+nama_akun+'">'+
-                        '</td>'+
-                        '<td class="text-center">'+
-                            debit +
-                            '<input type="hidden" name="trx_debit[]" value="'+debit+'" class="valueDebit">'+
-                        '</td>'+
-                        '<td class="text-center">'+
-                            kredit + 
-                            '<input type="hidden" name="trx_kredit[]" value="'+kredit+'" class="valueKredit">'+
-                        '</td>'+
-                        '<td class="text-center">'+
-                            deskripsi +
-                            '<input type="hidden" name="trx_description[]" value="'+deskripsi+'">'+
-                        '</td>'+
-                        '<td class="text-center">'+
-                            '<div class="btn-group btn-group">'+
-                                '<a href="#" class="btn btn-sm btn-info btn-edit-trx" data-row="data'+nextData+'" data-no-akun="'+no_akun+'" data-nama="'+nama_akun+'" data-debit="'+debit+'" data-kredit="'+kredit+'" data-deskripsi="'+deskripsi+'"><i class="ni ni-settings"></i></a>'+
-                                '<a href="#" data-row="data'+nextData+'"" class="btn btn-sm btn-danger btn-delete-trx"><span class="fa fa-times"></span></a>'+
-                            '</div>'+
-                        '</td>'+
-                    '</tr>');
-
-                $('[name="jumlah"]').val(nextData);
-
-                reset_form(); 
-                valueBalance(); 
-            }
-
+		 $(document).on('submit', '#form-addDetailTransaksi', function() {
+			var formData = new FormData(this);
+            actionData(formData, 'addDetailTransaksi');
+            getDetailTransaksi();
+            reset_form();
+            valueBalance();
             return false;
 		});
+
+        $(document).on('submit', '#form-updateDetailTransaksi', function() {
+            var formData = new FormData(this);
+            actionData(formData, 'updateDetailTransaksi');
+            
+            $('[name="trx_id"]').remove();
+            $('#form-updateDetailTransaksi').removeProp('id');
+            $('#form-updateDetailTransaksi').prop('id', 'form-addDetailTransaksi');
+
+            getDetailTransaksi();
+            reset_form();
+            valueBalance();
+            return false;
+        });
 
 		$('#table-input-jurnal').on('click', '.edit-trx', function() {
 
@@ -329,7 +290,8 @@
 
         $('#table-list-transaksi').on('click', '.btn-edit-trx', function() {
             var data_ke = $(this).attr('data-row');
-            var no_akun = $(this).attr('data-no-akun');
+            var trx_id = $(this).attr('data-trx-id');
+            var no_akun = $(this).attr('data-id-akun');
             var nama = $(this).attr('data-nama');
             var debit = $(this).attr('data-debit');
             var kredit = $(this).attr('data-kredit');
@@ -340,9 +302,10 @@
             $('#debit').val(debit);
             $('#credit').val(kredit);
             $('#description').val(deskripsi);
+            $('#form-addDetailTransaksi').append('<input type="hidden" name="trx_id" value="'+trx_id+'">');
 
-            $('#addRowTransaksi').removeProp('id');
-            $('#addRowTransaksi').attr('id', 'updateRowTransaksi');
+            $('#form-addDetailTransaksi').removeProp('id');
+            $('#form-addDetailTransaksi').prop('id', 'form-updateDetailTransaksi');
 
             $('#'+data_ke).remove();
             return false;
