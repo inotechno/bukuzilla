@@ -105,6 +105,13 @@
 	    	return $this->db->update('jurnal', $data, array('id_jurnal' => $id_jurnal));
 	    }
 
+	    function deleteJurnal($id)
+	    {
+	    	$this->db->delete('jurnal', array('id_jurnal' => $id));
+	    	$this->db->delete('transaksi_jurnal', array('trx_id_jurnal' => $id));
+	    	return true;
+	    }
+
 	    function addDetailTransaksi($data)
 	    {
 	    	return $this->db->insert('transaksi_jurnal', $data);

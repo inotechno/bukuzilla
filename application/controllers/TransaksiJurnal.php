@@ -65,14 +65,9 @@
 				$row[] = $ls->status_post;
 				$row[] = date('d-m-Y H:i:s', strtotime($ls->created_at));
 				$row[] = $ls->nama_lengkap;
-				$row[] = '<div class="dropdown">
-	                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                          <i class="fas fa-ellipsis-v"></i>
-	                        </a>
-	                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-	                          <a class="dropdown-item update-data" href="'.site_url('TransaksiJurnal/pageUpdateJurnal?id='.$ls->id_jurnal).'" data-no-voucher="'.$ls->no_voucher.'" data-id-jurnal="'.$ls->id_jurnal.'" data-description="'.$ls->description.'" data-tgl-voucher="'.$ls->tgl_voucher.'">Update</a>
-	                          <a class="dropdown-item delete-data" href="#" data-no-voucher="'.$ls->no_voucher.'" data-id-jurnal="'.$ls->id_jurnal.'" data-description="'.$ls->description.'" data-tgl-voucher="'.$ls->tgl_voucher.'">Delete</a>
-	                        </div>
+				$row[] = '<div class="btn-group btn-group">
+	                          <a class="btn btn-sm btn-info update-data" href="'.site_url('TransaksiJurnal/pageUpdateJurnal?id='.$ls->id_jurnal).'"><i class="ni ni-settings"></i></a>
+	                          <a class="btn btn-sm btn-danger delete-data" href="#" data-no-voucher="'.$ls->no_voucher.'" data-id-jurnal="'.$ls->id_jurnal.'"><span class="fa fa-times"></span></a>
 	                      </div>';
 
 				$data[] = $row;
@@ -205,6 +200,25 @@
 			echo json_encode($response);
 		}
 
+		public function deleteJurnal()
+		{
+			$id = $this->input->post('id_jurnal_delete');
+			$act = $this->TransaksiModel->deleteJurnal($id);
+			if ($act) {
+				$response = array(
+					'type' => 'success',
+					'message' => 'Data Jurnal Berhasil Dihapus'
+				);
+			}else{
+				$response = array(
+					'type' => 'danger',
+					'message' => 'Data Jurnal Gagal Dihapus'
+				);
+			}
+
+			echo json_encode($response);
+		}
+
 		public function addDetailTransaksi()
 		{
 			$data['trx_id_jurnal'] = $this->input->post('trx_id_jurnal');
@@ -253,6 +267,7 @@
 
 			echo json_encode($response);
 		}
+
 	
 	}
 	

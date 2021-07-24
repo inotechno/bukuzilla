@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="<?= site_url('assets/assets/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css') ?>">
   <link rel="stylesheet" href="<?= site_url('assets/assets/vendor/animate.css/animate.min.css') ?>">
   <!-- Page plugins -->
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/3.3.3/css/fixedColumns.bootstrap4.min.css">
   <link rel="stylesheet" href="<?= site_url('assets/assets/vendor/select2/dist/css/select2.min.css')?>">
   <!-- Argon CSS -->
   <link rel="stylesheet" href="<?= site_url('assets/assets/css/argon.css?v=1.1.0') ?>" type="text/css">

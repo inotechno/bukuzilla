@@ -7,8 +7,16 @@
 	$(document).ready(function() {
 		table = $('#table-jurnal').DataTable({
 			"processing": true, 
-            "serverSide": true, 
-            "order": [], 
+            "serverSide": true,
+            "scrollX": true,
+            "fixedColumns": {
+            	 "leftColumns": 1,
+            	 "rightColumns": 1
+            },
+            // "responsive": true,
+            // "lengthChange": false,
+            "order": [],
+            "autoWidth" : true,
              
             "ajax": {
                 "url": "<?= base_url('TransaksiJurnal/getJurnal')?>",
@@ -42,17 +50,12 @@
 
 		function actionData(formData, nameAction) {
 			$.ajax({
-				url: '<?= base_url("Account/") ?>'+nameAction+'',
+				url: '<?= base_url("TransaksiJurnal/") ?>'+nameAction+'',
 				type: 'POST',
 				dataType: 'JSON',
 				data: formData,
 				processData: false,
 		        contentType: false,
-		        beforeSend: function()
-                { 
-                    $("#btn-"+nameAction).attr('disabled', '');
-                    $("#btn-"+nameAction).html('<span class="ni ni-send"></span> Sending ...');
-                },
 				success:function (response) {
 					$.notify({
 	                    icon: 'ni ni-bell-55',
@@ -70,50 +73,28 @@
 	                 	}
 	                });
 
-					if (response.type == 'success') {
-						$('#btn-'+nameAction).attr('disabled', false);
-						$('#btn-'+nameAction).html('Submit');
-	            		$('#form-'+nameAction)[0].reset();
-					}
+	                $('#modal-'+nameAction).modal('hide');
 				}
 			});
 		}
 
-		// Click Row Data Update
-			$('#table-daftar-akun').on('click', 'tr .update-data', function() {
-				var no_akun = $(this).attr('data-no-akun');
-				var sub_no_akun = $(this).attr('data-sub-no-akun');
-				var nama = $(this).attr('data-nama');
-				var status = $(this).attr('data-status');
-				var level_akun = $(this).attr('data-level');
+		$('#form-deleteJurnal').submit(function() {
+			var formData = new FormData(this);
+			actionData(formData, 'deleteJurnal');
+        	reload_table();
 
-				$('form#form-addAccount').prop('id', 'form-updateAccount');
-				$('[name="no_akun"]').val(no_akun);
-				$('[name="sub_no_akun"]').val(sub_no_akun);
-				$('[name="nama_akun"]').val(nama);
-				$('[name="level_akun"]').val(level_akun);
-				$('[name="status_akun"]').val(status);
-
-				$('[name="no_akun"]').prop('readonly', true);
-				$('[name="sub_no_akun"]').prop('readonly', true);
-
-				$('#btn-addAccount').html('Update');
-				$('#btn-addAccount').attr('form', 'form-updateAccount');
-				$('#btn-addAccount').attr('id', 'btn-updateAccount');
-			});
-		// End Click Row Data Update
+        	return false;
+		});
 		
 		// Click Row Data 
-			$('#table-daftar-akun').on('click', 'tr .delete-data', function() {
-				var no_akun = $(this).attr('data-no-akun');
-				var sub_no_akun = $(this).attr('data-sub-no-akun');
-				var nama = $(this).attr('data-nama');
+			$('#table-daftar-jurnal').on('click', 'tr .delete-data', function() {
+				var id_jurnal = $(this).attr('data-id-jurnal');
+				var no_voucher = $(this).attr('data-no-voucher');
 				
-				$('#akun-delete').html(nama);
-				$('[name="no_akun_delete"]').val(no_akun);
-				$('[name="sub_no_akun_delete"]').val(sub_no_akun);
+				$('#no-voucher-delete').html(no_voucher);
+				$('[name="id_jurnal_delete"]').val(id_jurnal);
 
-				$('#modal-deleteAccount').modal('show');
+				$('#modal-deleteJurnal').modal('show');
 			});		
 		// End Click Row Data
 
