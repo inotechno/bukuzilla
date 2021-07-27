@@ -67,6 +67,7 @@
 	        return $this->db->count_all_results();
 	    }
 	// Datatable End
+	   
 	    function getJurnalById($id)
 	    {
 	    	return $this->db->get_where('jurnal', array('id_jurnal' => $id))->row();
@@ -120,6 +121,11 @@
 	    function updateDetailTransaksi($trx_id, $data)
 	    {
 	    	return $this->db->update('transaksi_jurnal', $data, array('trx_id' => $trx_id));
+	    }
+
+	    function deleteDetailTransaksi($id_trx)
+	    {
+	    	return $this->db->delete('transaksi_jurnal', array('trx_id' => $id_trx));
 	    }
 	
 	}

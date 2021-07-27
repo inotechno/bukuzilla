@@ -119,8 +119,8 @@
 	                        </td>
 	                        <td class="text-center">
 	                            <div class="btn-group btn-group">
-	                                <a href="#" class="btn btn-sm btn-info btn-edit-trx" data-row="data'.$no.'" data-trx-id="'.$dt->trx_id.'" data-no-akun="'.$dt->no_akun.'.'.$dt->sub_no_akun.'" data-id-akun="'.$dt->id.'" data-nama="'.$dt->nama_akun.'" data-debit="'.$dt->trx_debit.'" data-kredit="'.$dt->trx_kredit.'" data-deskripsi="'.$dt->trx_description.'"><i class="ni ni-settings"></i></a>
-	                                <a href="#" data-row="data'.$no.'"" class="btn btn-sm btn-danger btn-delete-trx"><span class="fa fa-times"></span></a>
+	                                <a href="#" class="btn btn-sm btn-info btn-edit-trx" data-row="data'.$no.'" data-trx-id="'.$dt->trx_id.'"data-no-akun="'.$dt->no_akun.'.'.$dt->sub_no_akun.'" data-id-akun="'.$dt->id.'" data-nama="'.$dt->nama_akun.'" data-debit="'.$dt->trx_debit.'" data-kredit="'.$dt->trx_kredit.'" data-deskripsi="'.$dt->trx_description.'"><i class="ni ni-settings"></i></a>
+	                                <a href="#" data-trx-id="'.$dt->trx_id.'" class="btn btn-sm btn-danger btn-delete-trx"><span class="fa fa-times"></span></a>
 	                            </div>
 	                        </td>
 	                    </tr>';	
@@ -163,13 +163,13 @@
 
 			if (!$act) {
 				$response = array(
-					'type' => 'danger',
-					'message' => 'Transaksi Gagal Ditambah'
+					'type' => 'success',
+					'message' => 'Transaksi Berhasil Ditambah'
 				);
 			}else{
 				$response = array(
-					'type' => 'success',
-					'message' => 'Transaksi Berhasil Ditambah'
+					'type' => 'danger',
+					'message' => 'Transaksi Gagal Ditambah'
 				);
 			}
 
@@ -268,7 +268,24 @@
 			echo json_encode($response);
 		}
 
-	
+		public function deleteDetailTransaksi()
+		{
+			$id_trx = $this->input->post('id_detail_transaksi_delete');
+			$act = $this->TransaksiModel->deleteDetailTransaksi($id_trx);
+			if ($act) {
+				$response = array(
+					'type' => 'success',
+					'message' => 'Data Detail Transaksi Berhasil Dihapus'
+				);
+			}else{
+				$response = array(
+					'type' => 'danger',
+					'message' => 'Data Detail Transaksi Gagal Dihapus'
+				);
+			}
+
+			echo json_encode($response);
+		}
 	}
 	
 	/* End of file TransaksiJurnal.php */

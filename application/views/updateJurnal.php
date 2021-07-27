@@ -93,3 +93,29 @@
           </div>
         </div>
       </div>
+
+      <div class="modal fade show" id="modal-deleteDetailTransaksi" tabindex="-1" role="dialog" aria-labelledby="modal-deleteDetailTransaksi" aria-modal="true">
+        <div class="modal-dialog modal-danger modal-dialog-top modal-sm" role="document">
+          <div class="modal-content bg-gradient-danger">
+            <div class="modal-header">
+              <h6 class="modal-title" id="modal-title-notification">Danger !</h6>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="py-3 text-center">
+                <i class="ni ni-bell-55 ni-3x"></i>
+                <h4 class="heading mt-4">Jika anda menghapus transaksi ini maka jurnal tidak akan balance dan mengakibatkan error !</h4>
+                <form class="form" id="form-deleteDetailTransaksi" method="POST">
+                  <input type="hidden" name="id_detail_transaksi_delete">
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-white" id="btn-deleteDetailTransaksi" form="form-deleteDetailTransaksi">Ok, Hapus</button>
+              <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>

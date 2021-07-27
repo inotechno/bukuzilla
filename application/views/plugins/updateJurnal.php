@@ -206,7 +206,7 @@
             return false;
         });
 
-		 $(document).on('submit', '#form-addDetailTransaksi', function() {
+		$(document).on('submit', '#form-addDetailTransaksi', function() {
 			var formData = new FormData(this);
             actionData(formData, 'addDetailTransaksi');
             getDetailTransaksi();
@@ -226,6 +226,15 @@
             getDetailTransaksi();
             reset_form();
             valueBalance();
+            return false;
+        });
+
+
+        $('#form-deleteDetailTransaksi').submit(function() {
+            var formData = new FormData(this);
+            actionData(formData, 'deleteDetailTransaksi');
+            $('#modal-deleteDetailTransaksi').modal('hide');
+            getDetailTransaksi();
             return false;
         });
 
@@ -312,9 +321,9 @@
         });
 
         $('#table-list-transaksi').on('click', '.btn-delete-trx', function() {
-            var id_row = $(this).attr('data-row');
-            $('#'+id_row).remove();
-            valueBalance();
+            var id_trx = $(this).attr('data-trx-id');
+            $('[name="id_detail_transaksi_delete"]').val(id_trx);
+            $('#modal-deleteDetailTransaksi').modal('show');
         });
 
 	});			

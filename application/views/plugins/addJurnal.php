@@ -29,7 +29,11 @@
 			placeholder: "Pilih Akun",
 		})
 
-		function reset_form() {
+        function reset_jurnal(){
+            $('#form-addTransaksi')[0].reset();
+        }
+
+		function reset_transaksi() {
             $('#no_account').focus();
             $('#no_account').val('').trigger('change');
             $('#account_name').val('');
@@ -185,7 +189,7 @@
 
                 $('[name="jumlah"]').val(nextData);
 
-                reset_form(); 
+                reset_transaksi(); 
                 valueBalance(); 
             }
 
@@ -245,7 +249,7 @@
 
                 $(this).removeAttr('data_ke');
 
-                reset_form();  
+                reset_transaksi();  
             }
 
             return false;
@@ -278,37 +282,78 @@
             valueBalance();
         });
         
-        $('#form-addTransaksi').submit(function() {
-            var data = $(this).serialize();
-            $.ajax({
-                url: '<?= base_url('TransaksiJurnal/addTransaksi') ?>',
-                type: 'POST',
-                dataType: 'JSON',
-                data: data,
-                success:function (response) {
-                    $.notify({
-	                    icon: 'ni ni-bell-55',
-	                    message:response.message
-	                },{
-	                    type:response.type,
-	                    z_index:2000,
-	                    placement: {
-	                      from: "top",
-	                      align: "right"
-	                },
-	                    animate: {
-	                      enter: 'animated fadeInDown',
-	                      exit: 'animated fadeOutUp'
-	                 	}
-	                });
 
-                    reset_form();
-                }
+        $(document).on('submit', '#form-addTransaksi', function() {
+            if ($('#jumlahDebit').html() != $('#jumlahKredit').html()) {
+                $.notify({
+                    icon: 'ni ni-bell-55',
+                    message:'Transaksi Tidak Balance'
+                },{
+                    type:'danger',
+                    z_index:2000,
+                    placement: {
+                      from: "top",
+                      align: "right"
+                },
+                    animate: {
+                      enter: 'animated fadeInDown',
+                      exit: 'animated fadeOutUp'
+                    }
+                });
 
-            });
+                return false;
+            }else if ($('#jumlahDebit').html() == 0 && $('#jumlahKredit').html() == 0) {
+                $.notify({
+                    icon: 'ni ni-bell-55',
+                    message:'Transaksi Belum Lengkap'
+                },{
+                    type:'danger',
+                    z_index:2000,
+                    placement: {
+                      from: "top",
+                      align: "right"
+                },
+                    animate: {
+                      enter: 'animated fadeInDown',
+                      exit: 'animated fadeOutUp'
+                    }
+                });
 
-            return false;
-            
+                return false;
+            }else{
+                var data = $(this).serialize();
+                $.ajax({
+                    url: '<?= base_url('TransaksiJurnal/addTransaksi') ?>',
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data: data,
+                    success:function (response) {
+                        $.notify({
+    	                    icon: 'ni ni-bell-55',
+    	                    message:response.message
+    	                },{
+    	                    type:response.type,
+    	                    z_index:2000,
+    	                    placement: {
+    	                      from: "top",
+    	                      align: "right"
+    	                },
+    	                    animate: {
+    	                      enter: 'animated fadeInDown',
+    	                      exit: 'animated fadeOutUp'
+    	                 	}
+    	                });
+
+                        reset_transaksi();
+                        reset_jurnal();
+                        $('#table-list-transaksi tr').remove();
+                        valueBalance();
+                    }
+
+                });
+
+                return false;
+            }
         });
 
 	});			
