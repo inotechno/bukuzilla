@@ -31,49 +31,66 @@
 		})
 
 		function filterDatatable() {
-			table = $('#table-inquiry').DataTable({
-				"processing": true, 
-	            "serverSide": true,
-	            // "scrollX": true,
-	            // "fixedColumns": {
-	            // 	 "leftColumns": 1,
-	            // 	 "rightColumns": 1
-	            // },
-	            "responsive": true,
-	            "lengthChange": false,
-	            "order": [],
-	            "autoWidth" : true,
-	             
-	            "ajax": {
-	                "url": "<?= base_url('InquiryLedger/getTransaksi')?>",
-	                "type": "POST",
-	                "data": function ( data ) {
-		                data.startDate = $('#startDate').val();
-		                data.endDate = $('#endDate').val();
-		                data.id_account = $('#no_account').val();
-		            }
-	            },
-	 			
-	 			"language": {
-			        "paginate": {
-			            "previous": '<i class="fas fa-angle-left"></i>',
-	      				"next": '<i class="fas fa-angle-right"></i>'
-			        },
-			        "aria": {
-			            "paginate": {
-			                "previous": 'Previous',
-			                "next":     'Next'
-			            }
-			        }
-			    },
-	             
-	            "columnDefs": [
-		            { 
-		                "targets": [ 0 ], 
-		                "orderable": false, 
-		            },
-	            ],
+
+			var startDate = $('#startDate').val();
+            var endDate = $('#endDate').val();
+            var id_account = $('#no_account').val();
+
+			$.ajax({
+				url: '<?= site_url('inquiryLedger/getTransaksi') ?>',
+				type: 'POST',
+				dataType: 'HTML',
+				data:{startDate:startDate, endDate:endDate, id_account:id_account},
+	            success:function (html) {
+	            	$('#table-body-inquiry').html(html);
+	            }
 			});
+			
+			return false;
+
+			// table = $('#table-inquiry').DataTable({
+			// 	"processing": true, 
+	  //           "serverSide": true,
+	  //           // "scrollX": true,
+	  //           // "fixedColumns": {
+	  //           // 	 "leftColumns": 1,
+	  //           // 	 "rightColumns": 1
+	  //           // },
+	  //           "responsive": true,
+	  //           "lengthChange": false,
+	  //           "order": [],
+	  //           "autoWidth" : true,
+	             
+	  //           "ajax": {
+	  //               "url": "<?= base_url('InquiryLedger/getTransaksi')?>",
+	  //               "type": "POST",
+	  //               "data": function ( data ) {
+		 //                data.startDate = $('#startDate').val();
+		 //                data.endDate = $('#endDate').val();
+		 //                data.id_account = $('#no_account').val();
+		 //            }
+	  //           },
+	 			
+	 	// 		"language": {
+			//         "paginate": {
+			//             "previous": '<i class="fas fa-angle-left"></i>',
+	  //     				"next": '<i class="fas fa-angle-right"></i>'
+			//         },
+			//         "aria": {
+			//             "paginate": {
+			//                 "previous": 'Previous',
+			//                 "next":     'Next'
+			//             }
+			//         }
+			//     },
+	             
+	  //           "columnDefs": [
+		 //            { 
+		 //                "targets": [ 0 ], 
+		 //                "orderable": false, 
+		 //            },
+	  //           ],
+			// });
 		}
 
 		function reload_table() {
@@ -85,7 +102,7 @@
 			$('#viewInquiry').show('100', function() {
 				$('#nama-akun').html(nama);
 				filterDatatable();
-				reload_table();
+				// reload_table();
 			});
 		});
 	});			

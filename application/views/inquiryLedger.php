@@ -40,10 +40,10 @@
                     <th class="text-center">Tanggal Voucher</th>
                     <th class="text-center">No Account</th>
                     <th class="text-center">Debit</th>
-                    <th class="text-center">redit</th>
+                    <th class="text-center">Kredit</th>
                     <th class="text-center">Saldo</th>
                 </thead>
-                <tbody>
+                <tbody id="table-body-inquiry">
                     
                 </tbody>
 

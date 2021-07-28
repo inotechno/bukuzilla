@@ -22,33 +22,52 @@
 			$this->load->view('plugins/inquiryLedger');
 		}
 
+		// public function getTransaksi()
+		// {
+		// 	$list = $this->InquiryModel->getInquiry();
+		// 	// echo $this->db->last_query($list);
+		// 	$data = array();
+		// 	$no = $_POST['start'];
+
+		// 	foreach ($list as $ls) {
+		// 		$row = array();
+		// 		$row[] = $ls->tgl_voucher;
+		// 		$row[] = $ls->no_voucher;
+		// 		$row[] = $ls->trx_debit;
+		// 		$row[] = $ls->trx_kredit;
+
+		// 		// $row[] = $saldo;
+
+		// 		$data[] = $row;
+		// 	}
+
+		// 	$output = array(
+		// 		"draw" => $_POST['draw'],
+	 //            "recordsTotal" => $this->InquiryModel->count_all(),
+	 //            "recordsFiltered" => $this->InquiryModel->count_filtered(),
+	 //            "data" => $data
+		// 	);
+
+		// 	echo json_encode($output);
+		// }
+
 		public function getTransaksi()
 		{
+			$html = '';
 			$list = $this->InquiryModel->getInquiry();
+			
 			// echo $this->db->last_query($list);
-			$data = array();
-			$no = $_POST['start'];
-
 			foreach ($list as $ls) {
-				$row = array();
-				$row[] = $ls->tgl_voucher;
-				$row[] = $ls->no_voucher;
-				$row[] = $ls->trx_debit;
-				$row[] = $ls->trx_kredit;
-
-				// $row[] = $saldo;
-
-				$data[] = $row;
+				$html .= '<tr>
+							<td>'.$ls->tgl_voucher.'</td>
+							<td>'.$ls->no_akun.'</td>
+							<td>'.number_format($ls->trx_debit).'</td>
+							<td>'.number_format($ls->trx_kredit).'</td>
+							<td>'.number_format($ls->saldo).'</td>
+							';
 			}
 
-			$output = array(
-				"draw" => $_POST['draw'],
-	            "recordsTotal" => $this->InquiryModel->count_all(),
-	            "recordsFiltered" => $this->InquiryModel->count_filtered(),
-	            "data" => $data
-			);
-
-			echo json_encode($output);
+			echo $html;
 		}
 	
 	}
