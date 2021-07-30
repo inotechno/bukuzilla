@@ -38,7 +38,7 @@
               <table class="table table-striped table-flush" id="table-inquiry">
                 <thead>
                     <th class="text-center">Tanggal Voucher</th>
-                    <th class="text-center">No Account</th>
+                    <th class="text-center">Deskripsi</th>
                     <th class="text-center">Debit</th>
                     <th class="text-center">Kredit</th>
                     <th class="text-center">Saldo</th>

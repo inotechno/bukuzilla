@@ -60,7 +60,7 @@
 			foreach ($list as $ls) {
 				$html .= '<tr>
 							<td>'.$ls->tgl_voucher.'</td>
-							<td>'.$ls->no_akun.'</td>
+							<td>'.$ls->trx_description.'</td>
 							<td>'.number_format($ls->trx_debit).'</td>
 							<td>'.number_format($ls->trx_kredit).'</td>
 							<td>'.number_format($ls->saldo).'</td>

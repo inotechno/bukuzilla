@@ -55,23 +55,22 @@
 
 		function getSaldoAkhir()
 		{
-			$this->db->query('SET @saldo = '.$this->getSaldoAwal().'');
-			$this->db->select('(@saldo := @saldo + (t.trx_debit-t.trx_kredit)) as saldoAkhir, a.saldo_awal as saldoAwal');
+			$this->db->select('SUM(t.trx_debit) - SUM(t.trx_kredit) as saldoAkhir');
 			$this->db->from('transaksi_jurnal as t');
  			$this->db->join('jurnal as j', 'j.id_jurnal = t.trx_id_jurnal', 'left');
- 			$this->db->join('account as a', 'a.id = t.trx_id_account', 'left');
  			$this->db->where('t.trx_id_account', $this->input->post('id_account'));
  			$this->db->where('j.tgl_voucher < ', $this->input->post('startDate'));
- 			$this->db->limit(1);
-			$query = $this->db->get()->result();
-			$saldo_akhir = $this->getSaldoAwal();
-			foreach ($query as $q) {
-				if ($q->saldoAkhir != 0) {
-					return $q->saldoAkhir;
-				}
+			$this->db->order_by('j.tgl_voucher', 'asc');
+
+			$query = $this->db->get()->row();
+			$saldo_akhir = $query->saldoAkhir;
+
+			if ($saldo_akhir == NULL) {
+				return $this->getSaldoAwal();
+			}else{
+				return $this->getSaldoAwal() + $saldo_akhir;
 			}
 
-			return $saldo_akhir;
 		}
 
 		function getInquiry()
