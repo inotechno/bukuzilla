@@ -34,12 +34,12 @@
 
               <div class="block">
                 <div class="col-md-2 float-right">
-                    <label>Debit</label>
-                    <h3 id="jumlahDebit"></h3>
-                </div>
-                <div class="col-md-2 float-right">
                     <label>Kredit</label>
                     <h3 id="jumlahKredit"></h3>
+                </div>
+                <div class="col-md-2 float-right">
+                    <label>Debit</label>
+                    <h3 id="jumlahDebit"></h3>
                 </div>
               </div>
             </div>

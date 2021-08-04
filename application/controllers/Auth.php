@@ -82,7 +82,7 @@
 
 		public function logout()
 		{
-			delete_cookie('dlh');
+			delete_cookie('auth_bukuzilla');
 			$this->session->sess_destroy();
 			redirect('Auth','refresh');
 		}

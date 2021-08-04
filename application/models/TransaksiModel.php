@@ -14,7 +14,7 @@
 			$this->db->from('jurnal as j');
  			$this->db->join('users as u', 'j.created_by = u.id', 'left');
 	        $i = 0;
-	     	
+
 	        foreach ($this->column_search as $item) // looping awal
 	        {
 	            if($_POST['search']['value']) // jika datatable mengirimkan pencarian dengan metode POST
@@ -73,6 +73,11 @@
 	    	return $this->db->get_where('jurnal', array('id_jurnal' => $id))->row();
 	    }
 
+		function getAllDetailTransaksi()
+		{
+			return $this->db->get('transaksi_jurnal');
+		}
+
 	    function getDetailTransaksi($id)
 	    {
 	    	$this->db->select('transaksi_jurnal.*,account.id, account.no_akun, account.sub_no_akun, account.nama_akun');
@@ -126,6 +131,15 @@
 	    function deleteDetailTransaksi($id_trx)
 	    {
 	    	return $this->db->delete('transaksi_jurnal', array('trx_id' => $id_trx));
+	    }
+
+	    function statusBalance()
+	    {
+	    	$this->db->select('SUM(t.trx_debit) as totalDebit, SUM(t.trx_kredit) as totalKredit');
+	    	$this->db->select('t.*, j.no_voucher, j.description, j.tgl_voucher, j.id_jurnal');
+	    	$this->db->join('jurnal as j', 'j.id_jurnal = t.trx_id_jurnal', 'left');
+	    	$this->db->group_by('j.id_jurnal');
+	    	return $this->db->get('transaksi_jurnal as t');
 	    }
 	
 	}

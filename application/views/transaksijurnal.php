@@ -19,8 +19,6 @@
                       <th>Nomor Voucher</th>
                       <th>Description</th>
                       <th>Voucher Date</th>
-                      <th>Status Balance</th>
-                      <th>Status Post</th>
                       <th>Created At</th>
                       <th>Created By</th>
                       <th>Action</th>

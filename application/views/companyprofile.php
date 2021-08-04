@@ -3,7 +3,7 @@
     <div class="container-fluid mt--6">
       <!-- Table -->
       <div class="row">
-        <div class="col-xl-4">
+        <div class="col-xl-5">
           <div class="card card-profile">
             <img src="<?= site_url('assets/assets/img/theme/img-1-1000x600.jpg') ?>" alt="Image placeholder" class="card-img-top">
             <div class="row justify-content-center">
@@ -68,7 +68,7 @@
           </div>
         </div>
 
-        <div class="col-xl-8">
+        <div class="col-xl-7">
           <div class="card">
             <div class="card-body">
               <form id="formProfile" enctype="multipart/form-data" method="POST"> 

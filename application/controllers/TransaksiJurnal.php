@@ -61,8 +61,6 @@
 				$row[] = $ls->no_voucher;
 				$row[] = $ls->description;
 				$row[] = $ls->tgl_voucher;
-				$row[] = 'T';
-				$row[] = $ls->status_post;
 				$row[] = date('d-m-Y H:i:s', strtotime($ls->created_at));
 				$row[] = $ls->nama_lengkap;
 				$row[] = '<div class="btn-group btn-group">

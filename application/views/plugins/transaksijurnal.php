@@ -8,12 +8,12 @@
 		table = $('#table-jurnal').DataTable({
 			"processing": true, 
             "serverSide": true,
-            "scrollX": true,
-            "fixedColumns": {
-            	 "leftColumns": 1,
-            	 "rightColumns": 1
-            },
-            // "responsive": true,
+            // "scrollX": true,
+            // "fixedColumns": {
+            // 	 "leftColumns": 1,
+            // 	 "rightColumns": 1
+            // },
+            "responsive": true,
             // "lengthChange": false,
             "order": [],
             "autoWidth" : true,

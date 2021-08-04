@@ -40,8 +40,6 @@
                     valueBalance();
                 }
             });
-
-            return false;
         }
 
 		function selectAccount() {
