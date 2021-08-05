@@ -135,9 +135,15 @@
                   </div>
 
                 </div>
-                <button type="button" class="btn btn-primary float-right" id="btn-update">Update</button>
-                <button type="button" class="btn btn-danger float-right" id="btn-cancelupdateProfile" style="display: none;">Cancel</button>
-                <button type="submit" class="btn btn-success float-right" id="btn-updateProfile" style="display: none;">Update</button>
+
+                <?php 
+                  if ($this->session->userdata('level') == 1) {?>
+                    <button type="button" class="btn btn-primary float-right" id="btn-update">Update</button>
+                    <button type="button" class="btn btn-danger float-right" id="btn-cancelupdateProfile" style="display: none;">Cancel</button>
+                    <button type="submit" class="btn btn-success float-right" id="btn-updateProfile" style="display: none;">Update</button>
+                <?php 
+                  }
+                ?>
               </form>
             </div>
           </div>
