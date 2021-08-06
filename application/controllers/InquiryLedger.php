@@ -31,7 +31,7 @@
 				$saldoAwal = $this->InquiryModel->getSaldoAkhir();
 
 					$html .= '<tr>
-								<td colspan="4"></td>
+								<td colspan="5"></td>
 								<td>'.number_format($saldoAwal).'</td>
 							  </tr>';
 				$count = 1;
@@ -51,6 +51,7 @@
 						}
 					}
 					$html .= '<tr>
+								<td>'.$ls->no_voucher.'</td>
 								<td>'.$ls->tgl_voucher.'</td>
 								<td>'.$ls->trx_description.'</td>
 								<td>'.number_format($ls->trx_debit).'</td>
@@ -61,7 +62,7 @@
 					$count++;
 				}
 					$html .= '<tr">
-							<td colspan="2"></td>
+							<td colspan="3"></td>
 							<td class="font-weight-bold">'.number_format($debit).'</td>
 							<td class="font-weight-bold">'.number_format($kredit).'</td>
 							<td class="font-weight-bold">'.number_format($saldo).'</td>

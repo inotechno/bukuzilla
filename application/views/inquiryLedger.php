@@ -37,6 +37,7 @@
               <h3 id="nama-akun"></h3>
               <table class="table table-striped table-flush" id="table-inquiry">
                 <thead>
+                    <th class="text-center">No Voucher</th>
                     <th class="text-center">Tanggal Voucher</th>
                     <th class="text-center">Deskripsi</th>
                     <th class="text-center">Debit</th>

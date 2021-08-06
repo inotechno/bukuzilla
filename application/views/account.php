@@ -11,7 +11,7 @@
                   <div class="form-group col-md">
                     <label class="h5">Nomor Akun</label class="h5">
                     <input type="text" name="no_akun" class="mask_account form-control form-control-sm" required>
-                    <p class="h6 mt-2">1000-4000 Digunakan Untuk Laporan Neraca, <br>4001-8000 Digunakan Untuk Laporan Rugi Laba</p>
+                    <p class="h6 mt-2">1000-3999 Digunakan Untuk Laporan Neraca, <br>4000-8000 Digunakan Untuk Laporan Rugi Laba</p>
                   </div>
 
                   <div class="form-group col-md">
