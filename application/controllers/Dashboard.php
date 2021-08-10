@@ -6,7 +6,7 @@
 		public function index()
 		{
 			$def['title'] = 'Dashboard';
-			$def['breadcrumb'] = '';
+			$def['breadcrumb'] = 'Dashboard';
 
 			$this->load->view('partials/head', $def);
 			$this->load->view('partials/navbar');
