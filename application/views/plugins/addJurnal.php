@@ -13,8 +13,8 @@
 				type: 'GET',
 				dataType: 'JSON',
 				success:function (data) {
-					var status = '';
 					for (var i = 0; i < data.length; i++) {
+                        var status = '';
 						if (data[i].status_akun == 'T') {
 							status = 'disabled';
 						}
@@ -364,7 +364,6 @@
 <script src="<?= site_url('assets/assets/vendor/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') ?>"></script>
 <script src="<?= site_url('assets/assets/vendor/select2/dist/js/select2.min.js') ?>"></script>
 <script src="https://cdn.datatables.net/fixedcolumns/3.3.3/js/dataTables.fixedColumns.min.js"></script>
-<script src="<?= site_url('assets/assets/vendor/select2/dist/js/select2.min.js') ?>"></script>
 <script src="<?= site_url('assets/assets/vendor/maskedinput/jquery.maskedinput.min.js') ?>"></script>
 <script src="<?= site_url('assets/assets/js/argon.js?v=1.1.0') ?>"></script>
 

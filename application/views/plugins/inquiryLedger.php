@@ -16,6 +16,7 @@
 				success:function (data) {
 					var status = '';
 					for (var i = 0; i < data.length; i++) {
+                        var status = '';
 						if (data[i].status_akun == 'T') {
 							status = 'disabled';
 						}
