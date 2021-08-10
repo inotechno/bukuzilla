@@ -57,3 +57,7 @@ $route['logout'] = 'Auth/logout';
 
 $route['companyprofile'] = 'CompanyProfile';
 $route['saldoAwal'] = 'Account/saldoAwal';
+
+$route['LaporanRugiLaba'] = 'Laporan/RugiLaba';
+$route['LaporanNeraca'] = 'Laporan/Neraca';
+$route['LaporanBukuBesar'] = 'Laporan/BukuBesar';
