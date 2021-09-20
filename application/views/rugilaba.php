@@ -18,6 +18,7 @@
                   </div>
 
                   <div class="col-md-2">
+                    <!-- <a href="<?= base_url('LaporanRugiLaba.xlsx') ?>" id="btnDownload" class="btn btn-warning">Download</a> -->
                     <button type="submit" id="btnDownload" class="btn btn-warning">Download</button>
                   </div>
 

@@ -29,7 +29,7 @@
                   $sub_menu = $this->db->get_where('menus', array('sub_menu' => $mn->id, 'level' => $this->session->userdata('level')));
                   if ($sub_menu->num_rows() > 0) { ?>
                       <li class="nav-item">
-                        <a class="nav-link" href="#<?= str_replace(' ', '', strtolower($mn->nama_menu)) ?>" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="<?= str_replace(' ', '', strtolower($mn->nama_menu)) ?>">
+                        <a class="nav-link" href="#<?= $mn->nama_menu ?>" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="<?= str_replace(' ', '', strtolower($mn->nama_menu)) ?>">
                           <i class="ni ni-<?= $mn->icon .' '.$mn->color?>"></i>
                           <span class="nav-link-text"><?= $mn->nama_menu ?></span>
                         </a>

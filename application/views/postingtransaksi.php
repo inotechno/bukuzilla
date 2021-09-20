@@ -9,7 +9,7 @@
             <div class="card-body">
 				<h3>JUMLAH TRANSAKSI <span id="jumlahData"></span></h3>
 				<p><small>Tunggu Proses Posting hingga selesai, jangan beralih ke halaman lain, 
-					proses ini membutuhkan waktu yang memakan waktu.</small></p>
+					proses ini membutuhkan waktu yang banyak.</small></p>
 				
 				<div id="progress">
 					<h6 class="text-right"><span id="dari"></span> / <span id="sampai"></span></h6>

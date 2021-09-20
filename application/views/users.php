@@ -1,4 +1,4 @@
-
+  
     <!-- Page content -->
     <div class="container-fluid mt--6">
 
@@ -29,7 +29,7 @@
         </div>
       </div>
 
-      <div class="modal fade show" id="modal-addUsers" tabindex="-1" role="dialog" aria-labelledby="modal-delete-soal" aria-modal="true">
+      <div class="modal fade show" id="modal-addUsers" tabindex="-1" role="dialog" aria-labelledby="modal-addUsers" aria-modal="true">
         <div class="modal-dialog modal-danger modal-dialog-top modal-sm" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -134,7 +134,7 @@
         </div>
       </div>
 
-      <div class="modal fade show" id="modal-deleteAccount" tabindex="-1" role="dialog" aria-labelledby="modal-delete-soal" aria-modal="true">
+      <div class="modal fade show" id="modal-deleteUsers" tabindex="-1" role="dialog" aria-labelledby="modal-deleteUsers" aria-modal="true">
         <div class="modal-dialog modal-danger modal-dialog-top modal-sm" role="document">
           <div class="modal-content bg-gradient-danger">
             <div class="modal-header">
@@ -146,15 +146,15 @@
             <div class="modal-body">
               <div class="py-3 text-center">
                 <i class="ni ni-bell-55 ni-3x"></i>
-                <h4 class="heading mt-4">Apakah anda yakin ingin menghapus akun ini <span id="akun-delete"></span></h4>
-                <form class="form" id="form-deleteAccount" method="POST">
-                  <input type="hidden" name="no_akun_delete">
-                  <input type="hidden" name="sub_no_akun_delete">
+                <h4 class="heading mt-4">Apakah anda yakin ingin menghapus user ini ??</h4>
+                <form class="form" id="form-deleteUsers" method="POST">
+                  <input type="hidden" name="id_delete">
+                  <input type="hidden" name="foto_delete">
                 </form>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-white" id="btn-deleteAccount" form="form-deleteAccount">Ok, Hapus</button>
+              <button type="submit" class="btn btn-white" id="btn-deleteUsers" form="form-deleteUsers">Ok, Hapus</button>
               <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Close</button>
             </div>
           </div>

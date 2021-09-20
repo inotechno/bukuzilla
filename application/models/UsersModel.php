@@ -82,6 +82,11 @@
 	    {
 	    	return $this->db->update('users', $data, array('id' => $id));
 	    }
+
+	    function deleteUsers($id)
+	    {
+	    	return $this->db->delete('users', array('id' => $id));
+	    }
 	
 	}
 	

@@ -141,6 +141,12 @@
 	    	$this->db->group_by('j.id_jurnal');
 	    	return $this->db->get('transaksi_jurnal as t');
 	    }
+
+	    function count_all_transaksi()
+	    {
+	        $this->db->from('transaksi_jurnal');
+	        return $this->db->count_all_results();
+	    }
 	
 	}
 	

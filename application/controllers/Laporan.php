@@ -117,6 +117,7 @@
 					foreach ($get as $gt) {
 						
 						$saldoAkhir = $this->LaporanModel->getSaldoAkhir($gt->id);
+						
 						if ($gt->level_akun == 1) {
 							$column = $column+1;
 							$styleArray = [
@@ -333,22 +334,24 @@
 					->setCellValue('F'.$column, $saldoAkhir);
 				
 				$trx = $this->LaporanModel->getBukuBesar($gt->id);
+				$count = 1;
 				foreach ($trx as $tr) {
 					$column = $column+1;
-					
-					$saldo = $saldoAkhir + $tr->trx_debit - $tr->trx_kredit;
-					$debit = $tr->trx_debit;
-					$kredit = $tr->trx_kredit;
-					
-					if ($tr->trx_debit != 0) {
-						$debit = $debit + $tr->trx_debit;
-						$saldo = $saldo + $tr->trx_debit;
+					if ($count==1) {
+						$saldo = $saldoAkhir + $tr->trx_debit - $tr->trx_kredit;
+						$debit = $tr->trx_debit;
+						$kredit = $tr->trx_kredit;
 					}else{
-						$kredit = $kredit + $tr->trx_kredit;
-						$saldo = $saldo - $tr->trx_kredit;
+						if ($tr->trx_debit != 0) {
+							$debit = $debit + $tr->trx_debit;
+							$saldo = $saldo + $tr->trx_debit;
+						}else{
+							$kredit = $kredit + $tr->trx_kredit;
+							$saldo = $saldo - $tr->trx_kredit;
+						}
 					}
 
-
+					$count++;
 					$styleArray = [
 					    'alignment' => [
 					        'indent' => 5,

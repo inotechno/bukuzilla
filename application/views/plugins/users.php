@@ -125,14 +125,12 @@
 		// End Click Row Data Update
 		
 		// Click Row Data 
-			$('#table-daftar-akun').on('click', 'tr .delete-data', function() {
-				var no_akun = $(this).attr('data-no-akun');
-				var sub_no_akun = $(this).attr('data-sub-no-akun');
-				var nama = $(this).attr('data-nama');
+			$('#table-daftar-users').on('click', 'tr .delete-data', function() {
+				var id = $(this).attr('data-id');
+				var foto = $(this).attr('data-foto');
 				
-				$('#akun-delete').html(nama);
-				$('[name="no_akun_delete"]').val(no_akun);
-				$('[name="sub_no_akun_delete"]').val(sub_no_akun);
+				$('[name="id_delete"]').val(id);
+				$('[name="foto_delete"]').val(foto);
 
 				$('#modal-deleteUsers').modal('show');
 			});		

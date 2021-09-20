@@ -53,7 +53,7 @@
 	                        </a>
 	                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
 	                          <a class="dropdown-item update-data" href="#" data-username="'.$ls->username.'" data-nama="'.$ls->nama_lengkap.'" data-foto="'.$ls->foto.'" data-id="'.$ls->id.'" data-level="'.$ls->level.'" data-status="'.$ls->status.'">Update</a>
-	                          <a class="dropdown-item delete-data" href="#" data-username="'.$ls->username.'" data-nama="'.$ls->nama_lengkap.'" data-level="'.$ls->level.'" data-status="'.$ls->status.'">Delete</a>
+	                          <a class="dropdown-item delete-data" href="#" data-username="'.$ls->username.'" data-nama="'.$ls->nama_lengkap.'" data-level="'.$ls->level.'" data-id="'.$ls->id.'" data-foto="'.$ls->foto.'" data-status="'.$ls->status.'">Delete</a>
 	                        </div>
 	                      </div>';
 
@@ -155,6 +155,29 @@
 				$response = array(
 					'type' => 'danger',
 					'message' => 'Data Gagal Diubah'
+				);
+			}
+
+			echo json_encode($response);
+		}
+
+		public function deleteUsers()
+		{
+			$id = $this->input->post('id_delete');
+			$foto = $this->input->post('foto_delete');
+
+			$act = $this->UsersModel->deleteUsers($id);
+			
+			if ($act) {
+	        	@unlink('./assets/assets/img/users/'.$foto);
+				$response = array(
+					'message' => 'Users Berhasil Dihapus',
+					'type' => 'success'
+				);
+			}else{
+				$response = array(
+					'message' => 'Users Gagal Dihapus',
+					'type' => 'danger'
 				);
 			}
 
