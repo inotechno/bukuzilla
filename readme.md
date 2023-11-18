@@ -48,3 +48,10 @@ Aplikasi ini merupakan sistem akuntansi yang dibangun menggunakan CodeIgniter 3 
 1. **General Ledger**
 2. **Chief Accounting**
 3. **Karyawan**
+
+## Instalasi
+
+1. Clone repositori ini: `git clone https://github.com/inotechno/bukuzilla.git`
+2. Impor struktur database dari `bukuzilla.sql`.
+3. Konfigurasi file `application/config/database.php` untuk pengaturan koneksi database.
+
