@@ -1,70 +1,50 @@
-###################
-What is CodeIgniter
-###################
+# Aplikasi Bukubesar Akuntansi
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+Aplikasi ini merupakan sistem akuntansi yang dibangun menggunakan CodeIgniter 3 dan MySQL. Aplikasi ini dirancang untuk mengelola transaksi dan menghasilkan laporan bukubesar. Terdapat tiga peran akses: General Ledger, Chief Accounting, dan Karyawan.
 
-*******************
-Release Information
-*******************
+## Fitur
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+1. **Company Profile Perusahaan**: Menampilkan informasi profil perusahaan.
+2. **Master Account**: Manajemen akun-akun dalam sistem.
+3. **Daftar Users**: Pendaftaran dan manajemen pengguna aplikasi.
+4. **Daftar Transaksi Jurnal**: Menampilkan daftar transaksi jurnal yang telah dilakukan.
+5. **Tambah Jurnal Transaksi**: Membuat transaksi jurnal baru.
+6. **Inquiry Ledger**: Melihat dan menelusuri buku besar.
+7. **Periksa Kesalahan Transaksi**: Memeriksa kesalahan dalam transaksi.
+8. **Posting Transaksi**: Melakukan posting transaksi ke dalam buku besar.
+9. **Saldo Awal**: Menyimpan dan mengelola saldo awal akun.
 
-**************************
-Changelog and New Features
-**************************
+## Screenshot
 
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
+### 1. Company Profile Perusahaan
+![Company Profile](screenshots/CompanyProfile.png)
 
-*******************
-Server Requirements
-*******************
+### 2. Master Account
+![Master Account](screenshots/MasterAccount.png)
 
-PHP version 5.6 or newer is recommended.
+### 3. Daftar Users
+![Daftar Users](screenshots/Users.png)
 
-It should work on 5.3.7 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
+### 4. Daftar Transaksi Jurnal
+![Daftar Transaksi Jurnal](screenshots/TransaksiJurnal.png)
 
-************
-Installation
-************
+### 5. Tambah Jurnal Transaksi
+![Tambah Jurnal Transaksi](screenshots/AddJurnal.png)
 
-Please see the `installation section <https://codeigniter.com/user_guide/installation/index.html>`_
-of the CodeIgniter User Guide.
+### 6. Inquiry Ledger
+![Inquiry Ledger](screenshots/InquiryLedger.png)
 
-*******
-License
-*******
+### 7. Periksa Kesalahan Transaksi
+![Periksa Kesalahan Transaksi](screenshots/PeriksaTransaksi.png)
 
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
+### 8. Posting Transaksi
+![Posting Transaksi](screenshots/PostingTransaksi.png)
 
-*********
-Resources
-*********
+### 9. Saldo Awal
+![Saldo Awal](screenshots/SaldoAwal.png)
 
--  `User Guide <https://codeigniter.com/docs>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community Slack Channel <https://codeigniterchat.slack.com>`_
+## Role Akses
 
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
-
-***************
-Acknowledgement
-***************
-
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
+1. **General Ledger**
+2. **Chief Accounting**
+3. **Karyawan**
