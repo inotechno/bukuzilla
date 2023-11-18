@@ -17,31 +17,31 @@ Aplikasi ini merupakan sistem akuntansi yang dibangun menggunakan CodeIgniter 3 
 ## Screenshot
 
 ### 1. Company Profile Perusahaan
-![Company Profile](screenshots/CompanyProfile.png)
+![Company Profile](screenshot/CompanyProfile.png)
 
 ### 2. Master Account
-![Master Account](screenshots/MasterAccount.png)
+![Master Account](screenshot/MasterAccount.png)
 
 ### 3. Daftar Users
-![Daftar Users](screenshots/Users.png)
+![Daftar Users](screenshot/Users.png)
 
 ### 4. Daftar Transaksi Jurnal
-![Daftar Transaksi Jurnal](screenshots/TransaksiJurnal.png)
+![Daftar Transaksi Jurnal](screenshot/TransaksiJurnal.png)
 
 ### 5. Tambah Jurnal Transaksi
-![Tambah Jurnal Transaksi](screenshots/AddJurnal.png)
+![Tambah Jurnal Transaksi](screenshot/AddJurnal.png)
 
 ### 6. Inquiry Ledger
-![Inquiry Ledger](screenshots/InquiryLedger.png)
+![Inquiry Ledger](screenshot/InquiryLedger.png)
 
 ### 7. Periksa Kesalahan Transaksi
-![Periksa Kesalahan Transaksi](screenshots/PeriksaTransaksi.png)
+![Periksa Kesalahan Transaksi](screenshot/PeriksaTransaksi.png)
 
 ### 8. Posting Transaksi
-![Posting Transaksi](screenshots/PostingTransaksi.png)
+![Posting Transaksi](screenshot/PostingTransaksi.png)
 
 ### 9. Saldo Awal
-![Saldo Awal](screenshots/SaldoAwal.png)
+![Saldo Awal](screenshot/SaldoAwal.png)
 
 ## Role Akses
 
